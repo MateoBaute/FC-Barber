@@ -925,6 +925,27 @@
     </style>
 </head>
 
+    <script>
+// Manejo de reset de contraseña
+const hash = window.location.hash;
+if(hash.includes('type=recovery')){
+  const params = new URLSearchParams(hash.replace('#',''));
+  const accessToken = params.get('access_token');
+  if(accessToken){
+    const newPass = prompt('Ingresá tu nueva contraseña:');
+    if(newPass){
+      supabase.createClient(SUPABASE_URL, SUPABASE_KEY)
+        .auth.updateUser({ password: newPass })
+        .then(({error}) => {
+          if(error) alert('Error: ' + error.message);
+          else alert('¡Contraseña actualizada! Ya podés iniciar sesión.');
+          window.location.hash = '';
+        });
+    }
+  }
+}
+</script>
+    
 <body>
 
     <!-- LOGIN OVERLAY -->
