@@ -1340,12 +1340,12 @@
         // ============================================================
         const SUPABASE_URL = 'https://sfznkxzdspqkzirabmky.supabase.co';
         const SUPABASE_KEY = 'sb_publishable_zqiUTbqgP09VFghNEJPRkg_CkjyOvyC';
-        const ANTHROPIC_KEY = ''; // <- pegá tu sk-ant-... acá
+        const ANTHROPIC_KEY = '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'; // <- pegá tu sk-ant-... acá
 
         // Lista de emails que tienen acceso al panel admin
         // Agregá acá los emails de los admins
         const ADMIN_EMAILS = [
-            'tu-email@gmail.com'  // <- cambiá esto por tu email real
+            'mateobaute10@gmail.com'  // <- cambiá esto por tu email real
         ];
         // ============================================================
 
@@ -1568,7 +1568,7 @@ Respondé en español rioplatense, respuestas cortas (máx 3 oraciones), usá al
             chatHistory.push({ role: 'user', content: msg });
             const ld = document.createElement('div'); ld.className = 'msg bot'; ld.innerHTML = '<span class="spinner"></span>Escribiendo...'; msgs.appendChild(ld);
             msgs.scrollTop = msgs.scrollHeight;
-            if (!ANTHROPIC_KEY) { ld.textContent = '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'; return; }
+            if (!ANTHROPIC_KEY) { ld.textContent = ''; return; }
             try {
                 const res = await fetch('https://api.anthropic.com/v1/messages', { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-api-key': ANTHROPIC_KEY, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' }, body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 300, system: SYSTEM_PROMPT, messages: chatHistory }) });
                 const data = await res.json();
