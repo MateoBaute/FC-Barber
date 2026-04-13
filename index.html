@@ -1372,7 +1372,7 @@
       <div class="section-title">NUESTRO EQUIPO</div>
       <div class="section-sub">MAESTROS DEL ARTE DEL BARBERO</div>
       <div class="team-grid">
-        <div class="barber-card">
+        <!-- <div class="barber-card">
           <div class="barber-avatar">👨‍🦱</div>
           <div class="barber-info">
             <div class="barber-name">Carlos Mendoza</div>
@@ -1405,7 +1405,7 @@
             <p style="font-size:12px;color:var(--muted);margin-top:8px;line-height:1.6">Moderno y creativo. Experto en
               cortes contemporáneos y tratamientos.</p><button class="btn-outline"
               style="margin-top:12px;padding:8px 16px;font-size:12px" onclick="reservarConBarbero(3)">Reservar con
-              Martín</button>
+              Martín</button> -->
           </div>
         </div>
       </div>
@@ -1443,9 +1443,9 @@
             <label>Barbero</label>
             <select id="b-barber">
               <option value="">Sin preferencia</option>
-              <option value="1">Carlos Mendoza ★4.9</option>
-              <option value="2">Diego Ríos ★4.8</option>
-              <option value="3">Martín López ★4.7</option>
+              <option value="1">Carlos Mendoza</option>
+              <option value="2">Diego Ríos</option>
+              <option value="3">Martín López</option>
             </select>
           </div>
         </div>
@@ -1725,25 +1725,23 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    // ============================================================
-    // CONFIGURACIÓN
-    // ============================================================
+
     const SUPABASE_URL = 'https://sfznkxzdspqkzirabmky.supabase.co';
     const SUPABASE_KEY = 'sb_publishable_zqiUTbqgP09VFghNEJPRkg_CkjyOvyC';
 
-    // Emails con acceso admin
+   
     const ADMIN_EMAILS = ['mateobaute10@gmail.com'];
 
-    const HORARIOS_BASE = ['09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30'];
+    const HORARIOS_BASE = ['08:00', '08:30','09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00', '21:30', '22:00', '22:30', '23:00'];
     // ============================================================
 
     const SERVICIOS = { 1: 'Corte Clásico', 2: 'Afeitado a Navaja', 3: 'Corte + Barba', 4: 'Fade', 5: 'Tratamiento', 6: 'Corte Infantil' };
     const BARBEROS = { 1: 'Carlos M.', 2: 'Diego R.', 3: 'Martín L.' };
-    const SYSTEM_PROMPT = `Sos el asistente virtual de Barbería Élite, una barbería premium en Buenos Aires, Argentina.
-DATOS: Av. Corrientes 1234, Buenos Aires. Tel: +54 11 4567-8901. Lunes-Sábado 9-20hs, Domingo 10-16hs.
-SERVICIOS: Corte Clásico $1200 45min | Afeitado $900 30min | Corte+Barba $1800 75min | Fade $1400 50min | Tratamiento $1100 40min | Infantil $800 30min.
-EQUIPO: Carlos Mendoza (fade, 4.9★) | Diego Ríos (afeitado, 4.8★) | Martín López (moderno, 4.7★).
-Respondé en español rioplatense, respuestas cortas (máx 4 oraciones), usá algún emoji ocasionalmente.`;
+    const SYSTEM_PROMPT = `Sos el asistente virtual de FC Barber, una barbería en Nueva Palmira (colonia), Uruguay.
+                           DATOS: Ituzaingó, Carmelo. Tel: +598 98 563 417. Lunes-Sábado 8-23hs.
+                           SERVICIOS: Corte Clásico $1200 | Afeitado $900 | Corte+Barba $1800 | Fade $1400 | Tratamiento $1100 | Infantil $800 
+                           EQUIPO: Carlos Mendoza | Diego Ríos | Martín López.
+                           Respondé en español rioplatense pero educado y formal, respuestas cortas (máx 4 oraciones), usá algún emoji ocasionalmente y saltos de lineas correctamente para que los mensajes sean claros.`;
 
     const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     let chatHistory = [];
